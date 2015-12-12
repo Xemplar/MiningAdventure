@@ -1,0 +1,2 @@
+# MiningAdventure
+Simple mining game
