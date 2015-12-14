@@ -1,0 +1,229 @@
+
+mining-adventure.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+diamond_ore
+  rotate: false
+  xy: 1, 39
+  size: 64, 192
+  orig: 64, 192
+  offset: 0, 0
+  index: -1
+saphire_ore
+  rotate: false
+  xy: 67, 167
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+stone
+  rotate: false
+  xy: 67, 101
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+amethyst_ore
+  rotate: false
+  xy: 133, 167
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+coal_ore
+  rotate: false
+  xy: 133, 101
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+platnum_ore
+  rotate: false
+  xy: 199, 167
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+ruby_ore
+  rotate: false
+  xy: 199, 101
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+silver_ore
+  rotate: false
+  xy: 265, 167
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+dirt
+  rotate: false
+  xy: 265, 101
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tin_ore
+  rotate: false
+  xy: 331, 167
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+lapis_ore
+  rotate: false
+  xy: 331, 101
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+redstone_ore
+  rotate: false
+  xy: 397, 167
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+gold_ore
+  rotate: false
+  xy: 397, 101
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+emerald_ore
+  rotate: false
+  xy: 67, 35
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+iron_ore
+  rotate: false
+  xy: 133, 35
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+copper_ore
+  rotate: false
+  xy: 199, 35
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+grass_side
+  rotate: false
+  xy: 265, 35
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+base
+  rotate: false
+  xy: 1, 5
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: 2
+base
+  rotate: false
+  xy: 331, 67
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: 3
+base
+  rotate: false
+  xy: 397, 67
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: 4
+base_DN
+  rotate: false
+  xy: 331, 33
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+base
+  rotate: false
+  xy: 397, 33
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: 1
+drill_emerald
+  rotate: false
+  xy: 463, 199
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+drill_stock
+  rotate: false
+  xy: 463, 165
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+drill_saphire
+  rotate: false
+  xy: 463, 131
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+drill_tin
+  rotate: false
+  xy: 463, 97
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+drill_ruby
+  rotate: false
+  xy: 463, 63
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+drill_base
+  rotate: false
+  xy: 67, 1
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+drill_diamond
+  rotate: false
+  xy: 98, 1
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+drill_silver
+  rotate: false
+  xy: 129, 1
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+drill_copper
+  rotate: false
+  xy: 160, 1
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+drill_bronze
+  rotate: false
+  xy: 191, 1
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
