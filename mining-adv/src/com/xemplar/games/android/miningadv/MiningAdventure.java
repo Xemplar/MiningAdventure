@@ -27,7 +27,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
-import com.xemplar.games.android.miningadv.screens.CompletedLevel;
 import com.xemplar.games.android.miningadv.screens.OptionsScreen;
 import com.xemplar.games.android.miningadv.screens.SplashScreen;
 import com.xemplar.games.android.miningadv.utils.InterScreenData;
@@ -73,7 +72,6 @@ public class MiningAdventure extends Game {
         }
         
         setScreen(new SplashScreen());
-        new CompletedLevel();
         new OptionsScreen();
     }
     

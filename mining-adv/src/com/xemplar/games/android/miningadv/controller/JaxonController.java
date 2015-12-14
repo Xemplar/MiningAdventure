@@ -29,10 +29,6 @@ import com.badlogic.gdx.utils.Pool;
 import com.xemplar.games.android.miningadv.blocks.Block;
 import com.xemplar.games.android.miningadv.entities.Entity;
 import com.xemplar.games.android.miningadv.entities.Jaxon;
-import com.xemplar.games.android.miningadv.items.Equippable;
-import com.xemplar.games.android.miningadv.items.Fireable;
-import com.xemplar.games.android.miningadv.items.Item;
-import com.xemplar.games.android.miningadv.items.ItemStack;
 import com.xemplar.games.android.miningadv.model.World;
 import com.xemplar.games.android.miningadv.screens.GameScreen;
 
@@ -52,14 +48,10 @@ public class JaxonController implements Controller{
 	private boolean isLeftDown;
 	private boolean isRightDown;
 	private boolean isJumpDown;
-	private boolean isFireDown;
 
 	public int leftPointer;
 	public int rightPointer;
 	public int jumpPointer;
-	public int firePointer;
-	
-	private boolean fired = false;
 
 	private Array<Block> collidable = new Array<Block>();
 
@@ -107,12 +99,6 @@ public class JaxonController implements Controller{
 		isJumpDown = true;
     }
 
-    public void firePressed(int pointer) {
-        keys.get(keys.put(Keys.FIRE, true));
-		firePointer = pointer;
-		isFireDown = true;
-    }
-
     public void leftReleased() {
         keys.get(keys.put(Keys.LEFT, false));
 		leftPointer = -1;
@@ -132,12 +118,6 @@ public class JaxonController implements Controller{
 		isJumpDown = false;
     }
 
-    public void fireReleased() {
-        keys.get(keys.put(Keys.FIRE, false));
-		firePointer = -1;
-		isFireDown = false;
-    }
-
     public void reset() {
         keys.get(keys.put(Keys.LEFT, false));
         leftPointer = -1;
@@ -146,10 +126,6 @@ public class JaxonController implements Controller{
         keys.get(keys.put(Keys.RIGHT, false));
         rightPointer = -1;
 		isRightDown = false;
-
-        keys.get(keys.put(Keys.FIRE, false));
-        firePointer = -1;
-		isFireDown = false;
 
         keys.get(keys.put(Keys.JUMP, false));
         jumpPointer = -1;
@@ -175,25 +151,6 @@ public class JaxonController implements Controller{
 
         if (jaxon.getVelocity().x < -MAX_VEL) {
             jaxon.getVelocity().x = -MAX_VEL;
-        }
-        
-        if(!isFireDown){
-        	fired = false;
-        }
-        
-        if(isFireDown && !fired){
-        	fired = true;
-        	int selected = jaxon.inventory.getSelectedItem();
-        	if(selected != -1){
-        		ItemStack stack = jaxon.inventory.getItem(selected);
-        		if(stack != null){
-        			Item mock = stack.getMock();
-            		if(mock instanceof Fireable){
-            			((Equippable) mock).onEquip(jaxon);
-            			((Fireable) mock).onFire();
-            		}
-        		}
-        	}
         }
     }
 
@@ -356,10 +313,6 @@ public class JaxonController implements Controller{
 
 	public boolean isJumpDown() {
 		return isJumpDown;
-	}
-
-	public boolean isFireDown() {
-		return isFireDown;
 	}
 }
 

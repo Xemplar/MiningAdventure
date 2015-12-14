@@ -38,13 +38,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.xemplar.games.android.miningadv.MiningAdventure;
-import com.xemplar.games.android.miningadv.blocks.ExitBlock;
 import com.xemplar.games.android.miningadv.controller.JaxonController;
 import com.xemplar.games.android.miningadv.entities.Entity;
 import com.xemplar.games.android.miningadv.entities.Jaxon;
 import com.xemplar.games.android.miningadv.model.World;
-import com.xemplar.games.android.miningadv.utils.InterScreenData;
-import com.xemplar.games.android.miningadv.utils.XPMLItem;
 import com.xemplar.games.android.miningadv.view.WorldRenderer;
 
 public class GameScreen implements Screen, InputProcessor {
@@ -57,7 +54,6 @@ public class GameScreen implements Screen, InputProcessor {
     private Jaxon jaxon;
     public float buttonSize = 0F;
     
-    private static int levelNum;
     public static Texture tex;
     public static int numPressed = 0;
     
@@ -72,29 +68,21 @@ public class GameScreen implements Screen, InputProcessor {
 	private TextureRegion controlRight;
 	private TextureRegion controlUp;
 	
-	public GameScreen(int level){
+	public GameScreen(int seed){
 		gameTicks = 0L;
         instance = this;
         
-        levelNum = level;
-        
         tex = new Texture(Gdx.files.internal("scatt.png"));
-		atlas = new TextureAtlas(Gdx.files.internal("textures/nerdshooter.atlas"));
+		atlas = new TextureAtlas(Gdx.files.internal("textures/mining-adventure.atlas"));
 		
 		font = MiningAdventure.gen.generateFont(MiningAdventure.params);
 		font.setColor(1, 1, 1, 1);
-		
-        if(level == -1){
-            GameScreen.useGameDebugRenderer = true;
-        } else {
-            GameScreen.useGameDebugRenderer = false;
-        }
         
 		controlLeft = atlas.findRegion("HUDLeft");
 		controlRight = atlas.findRegion("HUDRight");
 		controlUp = atlas.findRegion("HUDJump");
 		
-		world = new World(level);
+		world = new World(seed);
 		jaxon = world.getJaxon();
 		controller = jaxon.getController();
 		
@@ -160,18 +148,7 @@ public class GameScreen implements Screen, InputProcessor {
             }
         } batch.end();
     }
-	
-    public static void finishLevel(int code){
-        XPMLItem item = new XPMLItem("data");
-        item.addElement(CompletedLevel.KEY_COMPLETED_TIME, (long)((gameTicks / 60D) * 10L) + "");
-        item.addElement(CompletedLevel.KEY_FINISH_TYPE, code + "");
-        item.addElement(CompletedLevel.KEY_LEVEL_NUM, levelNum + "");
-        
-        InterScreenData.getInstance(MiningAdventure.COMP_DATA).setData(item);
-        
-        MiningAdventure.mining.setScreen(CompletedLevel.instance);
-    }
-    
+	    
     public void resize(int width, int height) {
         renderer.setSize(width, height);
         this.width = width;
@@ -227,9 +204,6 @@ public class GameScreen implements Screen, InputProcessor {
         	if (keycode == MiningAdventure.mining.keys[2]){
 		    	controller.jumpPressed(-1);
         	}
-        	if (keycode == MiningAdventure.mining.keys[3]){
-		    	controller.firePressed(-1);
-        	}
     	} else {
     		if (keycode == Keys.LEFT){
 		    	controller.leftPressed(-1);
@@ -240,13 +214,6 @@ public class GameScreen implements Screen, InputProcessor {
         	if (keycode == Keys.SPACE){
 				controller.jumpPressed(-1);
         	}
-        	if (keycode == Keys.X){
-				controller.firePressed(-1);
-        	}
-    	}
-    	
-    	if ((keycode == Keys.BACK) || (keycode == Keys.ESCAPE)){
-        	finishLevel(ExitBlock.EXIT_NOCLEAR);
     	}
     	
     	if (keycode == Keys.S && MiningAdventure.sanic){
@@ -286,9 +253,6 @@ public class GameScreen implements Screen, InputProcessor {
         	if (keycode == MiningAdventure.mining.keys[2]){
 		    	controller.jumpReleased();
         	}
-        	if (keycode == MiningAdventure.mining.keys[3]){
-		    	controller.fireReleased();
-        	}
     	} else {
     		if (keycode == Keys.LEFT){
 		    	controller.leftReleased();
@@ -298,9 +262,6 @@ public class GameScreen implements Screen, InputProcessor {
         	}
         	if (keycode == Keys.SPACE){
 		    	controller.jumpReleased();
-        	}
-        	if (keycode == Keys.X){
-		    	controller.fireReleased();
         	}
     	}
         return true;
@@ -323,10 +284,6 @@ public class GameScreen implements Screen, InputProcessor {
 		
 			if(jump.contains(x, (y - height) * -1)){
 				controller.jumpPressed(pointer);
-			}
-			
-			if(fire.contains(x, (y - height) * -1)){
-				controller.firePressed(pointer);
 			}
 		    
             if(sanic.contains(x, (y - height) * -1)){
@@ -365,10 +322,6 @@ public class GameScreen implements Screen, InputProcessor {
 		
         	if(jump.contains(x, (y - height) * -1)){
 				controller.jumpReleased();
-			}
-        	
-        	if(fire.contains(x, (y - height) * -1)){
-				controller.fireReleased();
 			}
         	return true;
 		}

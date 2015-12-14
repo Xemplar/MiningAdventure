@@ -27,7 +27,6 @@ import com.xemplar.games.android.miningadv.blocks.Block;
 import com.xemplar.games.android.miningadv.controller.Controller;
 import com.xemplar.games.android.miningadv.controller.EntityController;
 import com.xemplar.games.android.miningadv.inventory.Inventory;
-import com.xemplar.games.android.miningadv.model.World;
 
 public abstract class Entity extends Block{
 	public enum State {
@@ -157,11 +156,6 @@ public abstract class Entity extends Block{
     
     public void kill(){
         this.health = 0;
-        onKill();
-    }
-    
-    protected void onKill(){
-    	World.despawnEntity(this);
     }
     
     public final void hurt(int amt){

@@ -27,7 +27,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
-import com.xemplar.games.android.miningadv.MiningAdventure;
 import com.xemplar.games.android.miningadv.controller.JaxonController;
 import com.xemplar.games.android.miningadv.inventory.Inventory;
 import com.xemplar.games.android.miningadv.items.ItemStack;
@@ -60,54 +59,29 @@ public class Jaxon extends Entity{
 	}
     
     public void loadTextures() {
-    	TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("textures/nerdshooter.atlas"));
+    	TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("textures/mining-adventure.atlas"));
 
-    	if(!MiningAdventure.sanic){
-        	jaxonIdleLeft = atlas.findRegion("jaxon00");
+    	jaxonIdleLeft = atlas.findRegion("base_DN");
 
-        	jaxonIdleRight = new TextureRegion(jaxonIdleLeft);
-        	jaxonIdleRight.flip(true, false);
-        	
-        	TextureRegion[] walkLeftFrames = new TextureRegion[4];
-        	
-        	walkLeftFrames[0] = atlas.findRegion("jaxon00");
-        	walkLeftFrames[1] = atlas.findRegion("jaxon01");
-        	walkLeftFrames[2] = atlas.findRegion("jaxon00");
-        	walkLeftFrames[3] = atlas.findRegion("jaxon02");
+    	jaxonIdleRight = new TextureRegion(jaxonIdleLeft);
+    	jaxonIdleRight.flip(true, false);
+    	
+    	TextureRegion[] walkLeftFrames = new TextureRegion[4];
+    	
+    	walkLeftFrames[0] = atlas.findRegion("base_DN");
+    	walkLeftFrames[1] = atlas.findRegion("base_DN");
+    	walkLeftFrames[2] = atlas.findRegion("base_DN");
+    	walkLeftFrames[3] = atlas.findRegion("base_DN");
 
-        	walkLeftAnimation = new Animation(RUNNING_FRAME_DURATION, walkLeftFrames);
-        	
-        	TextureRegion[] walkRightFrames = new TextureRegion[4];
-        	
-        	for (int i = 0; i < 4; i++) {
-            	walkRightFrames[i] = new TextureRegion(walkLeftFrames[i]);
-            	walkRightFrames[i].flip(true, false);
-        	}
-        	walkRightAnimation = new Animation(RUNNING_FRAME_DURATION, walkRightFrames);
-        	
-        	return;
+    	walkLeftAnimation = new Animation(RUNNING_FRAME_DURATION, walkLeftFrames);
+    	
+    	TextureRegion[] walkRightFrames = new TextureRegion[4];
+    	
+    	for (int i = 0; i < 4; i++) {
+        	walkRightFrames[i] = new TextureRegion(walkLeftFrames[i]);
+        	walkRightFrames[i].flip(true, false);
     	}
-    	jaxonIdleLeft = atlas.findRegion("sanic");
-
-        jaxonIdleRight = new TextureRegion(jaxonIdleLeft);
-        jaxonIdleRight.flip(true, false);
-
-        TextureRegion[] walkLeftFrames = new TextureRegion[4];
-
-        walkLeftFrames[0] = atlas.findRegion("sanic");
-        walkLeftFrames[1] = atlas.findRegion("sanic");
-        walkLeftFrames[2] = atlas.findRegion("sanic");
-        walkLeftFrames[3] = atlas.findRegion("sanic");
-
-        walkLeftAnimation = new Animation(RUNNING_FRAME_DURATION, walkLeftFrames);
-
-        TextureRegion[] walkRightFrames = new TextureRegion[4];
-
-        for (int i = 0; i < 4; i++) {
-            walkRightFrames[i] = new TextureRegion(walkLeftFrames[i]);
-            walkRightFrames[i].flip(true, false);
-        }
-        walkRightAnimation = new Animation(RUNNING_FRAME_DURATION, walkRightFrames);
+    	walkRightAnimation = new Animation(RUNNING_FRAME_DURATION, walkRightFrames);
     }
     
     public boolean hasInventory() {
@@ -151,8 +125,6 @@ public class Jaxon extends Entity{
         if(!isHidden()){
             batch.draw(jaxonFrame, (getPosition().x - drawX), getPosition().y, (0.5F), (0.5F));
         }
-        
-        //Render Selected Item
         
         int selected = inventory.getSelectedItem();
     	if(selected != -1){

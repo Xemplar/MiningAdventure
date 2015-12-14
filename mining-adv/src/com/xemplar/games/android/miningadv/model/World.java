@@ -25,7 +25,6 @@ import com.badlogic.gdx.utils.Array;
 import com.xemplar.games.android.miningadv.blocks.Block;
 import com.xemplar.games.android.miningadv.entities.Entity;
 import com.xemplar.games.android.miningadv.entities.Jaxon;
-import com.xemplar.games.android.miningadv.screens.GameScreen;
 
 public class World {
 	private Level level;
@@ -41,14 +40,6 @@ public class World {
 
 	public Array<Entity> getEntities(){
 		return level.getEntities();
-	}
-	
-	public static void spawnEntity(Entity e){
-		GameScreen.instance.world.getLevel().spawnEntity(e);
-	}
-	
-	public static void despawnEntity(Entity e){
-		GameScreen.instance.world.getLevel().despawnEntity(e);
 	}
 	
 	public void setBlock(int x, int y, Block b){
@@ -142,8 +133,8 @@ public class World {
         return blocks;
 	}
     
-	public World(int levelNum){
-        level = new Level(levelNum);
+	public World(int seed){
+        level = new Level(seed);
 		jaxon = new Jaxon(level.jaxonStart);
 		getEntities().add(jaxon);
 	}
