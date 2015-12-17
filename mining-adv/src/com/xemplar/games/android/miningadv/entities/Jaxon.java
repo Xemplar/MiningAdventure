@@ -1,15 +1,17 @@
 /*
- * NerdShooter is a pseudo library project for future Xemplar 2D Side Scroller Games.
+ * Mining Adventure is tycoon like game where the goal is to collect materials,
+ * sell them, then upgrade you digger
+ * 
  * Copyright (C) 2015  Rohan Loomis
  *
- * This file is part of NerdShooter
+ * This file is part of Mining Adventure
  *
- * NerdShooter is free software: you can redistribute it and/or modify
+ * Mining Adventure is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, version 3 of the License, or
  * any later version.
  *
- * NerdShooter is distributed in the hope that it will be useful,
+ * Mining Adventure is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -33,7 +35,7 @@ import com.xemplar.games.android.miningadv.items.ItemStack;
 import com.xemplar.games.android.miningadv.screens.GameScreen;
 
 public class Jaxon extends Entity{
-    private static final float RUNNING_FRAME_DURATION = 0.06f;
+    private static final float RUNNING_FRAME_DURATION = 0.1f;
 	
 	private TextureRegion jaxonIdleLeft;
     private TextureRegion jaxonIdleRight;
@@ -50,7 +52,7 @@ public class Jaxon extends Entity{
         
 		controller = new JaxonController(this);
 		
-        drawX = (bounds.getWidth() / 2F) - (1.0F / 2F);
+        drawX = (bounds.getWidth() / 2F) - (1.5F / 2F);
         drawX = (drawX < 0) ? -drawX : drawX;
         drawX = drawX / 4F;
         
@@ -61,17 +63,17 @@ public class Jaxon extends Entity{
     public void loadTextures() {
     	TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("textures/mining-adventure.atlas"));
 
-    	jaxonIdleLeft = atlas.findRegion("base_DN");
+    	jaxonIdleLeft = atlas.findRegion("baseDN");
 
     	jaxonIdleRight = new TextureRegion(jaxonIdleLeft);
     	jaxonIdleRight.flip(true, false);
     	
     	TextureRegion[] walkLeftFrames = new TextureRegion[4];
     	
-    	walkLeftFrames[0] = atlas.findRegion("base_DN");
-    	walkLeftFrames[1] = atlas.findRegion("base_DN");
-    	walkLeftFrames[2] = atlas.findRegion("base_DN");
-    	walkLeftFrames[3] = atlas.findRegion("base_DN");
+    	walkLeftFrames[0] = atlas.findRegion("base01");
+    	walkLeftFrames[1] = atlas.findRegion("base02");
+    	walkLeftFrames[2] = atlas.findRegion("base03");
+    	walkLeftFrames[3] = atlas.findRegion("base04");
 
     	walkLeftAnimation = new Animation(RUNNING_FRAME_DURATION, walkLeftFrames);
     	
@@ -123,7 +125,7 @@ public class Jaxon extends Entity{
         }
         
         if(!isHidden()){
-            batch.draw(jaxonFrame, (getPosition().x - drawX), getPosition().y, (0.5F), (0.5F));
+            batch.draw(jaxonFrame, (getPosition().x - drawX), getPosition().y, 1.5F, 0.75F);
         }
         
         int selected = inventory.getSelectedItem();

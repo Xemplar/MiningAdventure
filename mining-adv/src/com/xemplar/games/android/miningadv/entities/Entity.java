@@ -1,15 +1,17 @@
 /*
- * NerdShooter is a pseudo library project for future Xemplar 2D Side Scroller Games.
+ * Mining Adventure is tycoon like game where the goal is to collect materials,
+ * sell them, then upgrade you digger
+ * 
  * Copyright (C) 2015  Rohan Loomis
  *
- * This file is part of NerdShooter
+ * This file is part of Mining Adventure
  *
- * NerdShooter is free software: you can redistribute it and/or modify
+ * Mining Adventure is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, version 3 of the License, or
  * any later version.
  *
- * NerdShooter is distributed in the hope that it will be useful,
+ * Mining Adventure is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -154,16 +156,26 @@ public abstract class Entity extends Block{
     	return controller;
     }
     
-    public void kill(){
-        this.health = 0;
+    public final void kill(Entity e){
+    	this.health = 0;
+    	onKill(e);
     }
     
-    public final void hurt(int amt){
+    protected void onKill(Entity e){
+    	
+    }
+    
+    public final void hurt(Entity e, int amt){
         if(!isDead()){
             this.health = this.health - amt;
+            onHurt(e);
         }
     }
 
+    protected void onHurt(Entity e){
+    	
+    }
+    
     public boolean isHidden() {
         return hidden;
     }

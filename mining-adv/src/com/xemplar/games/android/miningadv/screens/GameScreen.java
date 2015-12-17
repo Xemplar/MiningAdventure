@@ -1,5 +1,6 @@
 /*
  * MiningAdventure is a pseudo library project for future Xemplar 2D Side Scroller Games.
+ * 
  * Copyright (C) 2015  Rohan Loomis
  *
  * This file is part of MiningAdventure
@@ -370,22 +371,22 @@ public class GameScreen implements Screen, InputProcessor {
 			int h = world.getLevel().getHeight();
 			
 			if(e.getPosition().x + 1 < 0){
-				e.kill();
+				e.kill(null);
 				continue;
 			}
 			
 			if(e.getPosition().x > w){
-				e.kill();
+				e.kill(null);
 				continue;
 			}
 			
 			if(e.getPosition().y + 1 < 0){
-				e.kill();
+				e.kill(null);
 				continue;
 			}
 			
 			if(e.getPosition().y > h){
-				e.kill();
+				e.kill(null);
 				continue;
 			}
 			

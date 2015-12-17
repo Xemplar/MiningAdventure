@@ -1,15 +1,17 @@
 /*
- * NerdShooter is a pseudo library project for future Xemplar 2D Side Scroller Games.
+ * Mining Adventure is tycoon like game where the goal is to collect materials,
+ * sell them, then upgrade you digger
+ * 
  * Copyright (C) 2015  Rohan Loomis
  *
- * This file is part of NerdShooter
+ * This file is part of Mining Adventure
  *
- * NerdShooter is free software: you can redistribute it and/or modify
+ * Mining Adventure is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, version 3 of the License, or
  * any later version.
  *
- * NerdShooter is distributed in the hope that it will be useful,
+ * Mining Adventure is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -85,7 +87,7 @@ public class Level {
 	}
 	
 	private Vector2 loadLevel(int seed){
-		Vector2 value = new Vector2(1, 1);
+		Vector2 value = new Vector2(1, 98);
 		
 		width = 50;
 		height = 100;
@@ -122,7 +124,8 @@ public class Level {
 		//extras[x + y * width] = new Block(new Vector2(x, y), id);
 	}
 	
-	private void addBlock(int x, int y, String id){
+	private void addBlock(int x, int yp, String id){
+		int y = (yp - height) * -1;
 		Vector2 pos = new Vector2(x, y);
 		Block block = parseID(id, x, y);
 		

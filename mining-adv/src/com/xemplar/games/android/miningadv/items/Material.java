@@ -17,32 +17,24 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http:www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.xemplar.games.android.miningadv.entities.ai;
+package com.xemplar.games.android.miningadv.items;
 
-import com.xemplar.games.android.miningadv.entities.Entity;
-
-public class LinearAI extends AbstractAI{
-	protected final long period;
-	protected final float speed;
+public class Material extends Item implements Sellable{
+	protected final int worth;
 	
-	public LinearAI(Entity e, long period, float speed) {
-		super(e);
-		this.period = period;
-		this.speed = speed;
-	}
-
-	public void update(float delta) {
-		if(e.getVelocity().x < speed){
-			e.getVelocity().add(speed, 0);
-		}
-	}
-
-	public void setVelocity(long ticks) {
-		if(ticks % period == 0){
-			e.getVelocity().set(-e.getVelocity().x, e.getVelocity().y);
-		}
+	protected Material(int id, int maxStack, String regionID, int worth){
+        super(id, maxStack, regionID);
+        this.worth = worth;
+    }
+	
+	public Material clone(){
+        return new Material(id, maxStack, regionID, worth);
+    }
+	
+	public int getPrice(){
+		return worth;
 	}
 }

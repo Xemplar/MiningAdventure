@@ -122,41 +122,41 @@ grass_side
   orig: 64, 64
   offset: 0, 0
   index: -1
-base
+baseDN
   rotate: false
   xy: 1, 5
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
-  index: 2
-base
+  index: -1
+base01
   rotate: false
   xy: 331, 67
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
-  index: 3
-base
+  index: -1
+base04
   rotate: false
   xy: 397, 67
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
-  index: 4
-base_DN
+  index: -1
+base03
   rotate: false
   xy: 331, 33
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
-base
+base02
   rotate: false
   xy: 397, 33
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
-  index: 1
+  index: -1
 drill_emerald
   rotate: false
   xy: 463, 199
