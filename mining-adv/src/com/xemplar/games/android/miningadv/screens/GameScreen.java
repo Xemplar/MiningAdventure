@@ -39,9 +39,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.xemplar.games.android.miningadv.MiningAdventure;
-import com.xemplar.games.android.miningadv.controller.JaxonController;
+import com.xemplar.games.android.miningadv.controller.DiggerController;
 import com.xemplar.games.android.miningadv.entities.Entity;
-import com.xemplar.games.android.miningadv.entities.Jaxon;
+import com.xemplar.games.android.miningadv.entities.Digger;
 import com.xemplar.games.android.miningadv.model.World;
 import com.xemplar.games.android.miningadv.view.WorldRenderer;
 
@@ -52,14 +52,14 @@ public class GameScreen implements Screen, InputProcessor {
 	private static TextureAtlas atlas;
 	private Rectangle left, right, jump, fire, sanic;
     public World world;
-    private Jaxon jaxon;
+    private Digger jaxon;
     public float buttonSize = 0F;
     
     public static Texture tex;
     public static int numPressed = 0;
     
     private WorldRenderer renderer;
-    private JaxonController controller;
+    private DiggerController controller;
 	private ShapeRenderer button;
 	private SpriteBatch batch;
 	private BitmapFont font;

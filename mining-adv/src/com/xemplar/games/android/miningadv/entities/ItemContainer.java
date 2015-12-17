@@ -33,6 +33,11 @@ public class ItemContainer extends Entity{
 		this.item = item;
 	}
 	
+	public ItemContainer(Vector2 position, Item item, int health) {
+		super(position, item.regionID, health);
+		this.item = item;
+	}
+	
 	public boolean hasInventory() {
 		return false;
 	}
@@ -48,6 +53,23 @@ public class ItemContainer extends Entity{
 				this.item = null;
 			}
 		}
+		this.hidden = true;
+	}
+	
+	public boolean isTouchable(){
+		return true;
+	}
+	
+	public boolean isCollideable(){
+		return !hidden;
+	}
+	
+	public void onTouch(Entity e){
+		this.kill(e);
+	}
+	
+	public ItemContainer clone(Vector2 pos){
+		return new ItemContainer(pos, this.regionID, item, this.health);
 	}
 	
 	public void updateEntity(float delta) {

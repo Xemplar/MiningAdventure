@@ -33,7 +33,7 @@ import com.badlogic.gdx.utils.Array;
 import com.xemplar.games.android.miningadv.MiningAdventure;
 import com.xemplar.games.android.miningadv.blocks.Block;
 import com.xemplar.games.android.miningadv.entities.Entity;
-import com.xemplar.games.android.miningadv.entities.Jaxon;
+import com.xemplar.games.android.miningadv.entities.Digger;
 import com.xemplar.games.android.miningadv.model.World;
 import com.xemplar.games.android.miningadv.screens.GameScreen;
 
@@ -75,7 +75,7 @@ public class WorldRenderer {
 			drawJaxon();
 		spriteBatch.end();
 		
-		if (debug) drawDebug();
+		/*if (debug) */drawDebug();
     }
 
 	public void moveCamera(float x,float y){
@@ -107,7 +107,7 @@ public class WorldRenderer {
     }
 
     private void drawJaxon() {
-        Jaxon jaxon = world.getJaxon();
+        Digger jaxon = world.getJaxon();
         
         jaxon.render(spriteBatch);
     }
@@ -135,7 +135,7 @@ public class WorldRenderer {
 			debugRenderer.rect(rect.x, rect.y, rect.width, rect.height);
 		}
 		
-		Jaxon jaxon = world.getJaxon();
+		Digger jaxon = world.getJaxon();
 		Rectangle rect = jaxon.getBounds();
 		debugRenderer.setColor(new Color(0, 1, 0, 1));
 		debugRenderer.rect(rect.x, rect.y, rect.width, rect.height);

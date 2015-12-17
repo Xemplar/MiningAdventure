@@ -26,13 +26,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.xemplar.games.android.miningadv.blocks.Block;
 import com.xemplar.games.android.miningadv.entities.Entity;
-import com.xemplar.games.android.miningadv.entities.Jaxon;
+import com.xemplar.games.android.miningadv.entities.Digger;
 
 public class World {
 	private Level level;
-    private Jaxon jaxon;
+    private Digger jaxon;
 	
-    public Jaxon getJaxon() {
+    public Digger getJaxon() {
         return jaxon;
     }
 	
@@ -137,7 +137,7 @@ public class World {
     
 	public World(int seed){
         level = new Level(seed);
-		jaxon = new Jaxon(level.jaxonStart);
+		jaxon = new Digger(level.jaxonStart);
 		getEntities().add(jaxon);
 	}
 }

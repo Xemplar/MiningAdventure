@@ -23,6 +23,8 @@
 package com.xemplar.games.android.miningadv.model;
 import static com.xemplar.games.android.miningadv.blocks.Block.*;
 
+import java.util.Random;
+
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.xemplar.games.android.miningadv.blocks.Block;
@@ -94,9 +96,9 @@ public class Level {
 		
 		setupLevel(width, height);
 		
-		for(int x = 0; x < width; x++){
-			addBlock(x, 4, "g");
-		}
+//		for(int x = 0; x < width; x++){
+//			addBlock(x, 4, "g");
+//		}
 		
 		for(int x = 0; x < width; x++){
 			for(int y = 5; y < height; y++){
@@ -104,6 +106,29 @@ public class Level {
 			}
 		}
         
+		Random ran = new Random(seed);
+		for(int x = 0; x < width; x++){
+			for(int y = 5; y < height; y++){
+				int chance = ran.nextInt(10);
+				if(chance == 0){
+					addBlock(x, y, "oi");
+					continue;
+				}
+				
+				chance = ran.nextInt(20);
+				if(chance == 0){
+					addBlock(x, y, "oc");
+					continue;
+				}
+				
+				chance = ran.nextInt(40);
+				if(chance == 0){
+					addBlock(x, y, "og");
+					continue;
+				}
+			}
+		}
+		
 		return value;
 	}
 	
@@ -143,6 +168,12 @@ public class Level {
     		return grass;
 		case "s" :
     		return rock;
+		case "oi" :
+    		return ore_iron;
+		case "oc" :
+    		return ore_copper;
+		case "og" :
+    		return ore_gold;
         }
 		
 		return null;

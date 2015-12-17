@@ -29,6 +29,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.xemplar.games.android.miningadv.entities.Entity;
+import com.xemplar.games.android.miningadv.entities.ItemContainer;
+import com.xemplar.games.android.miningadv.items.Item;
 import com.xemplar.games.android.miningadv.screens.GameScreen;
 
 public class Block {
@@ -38,6 +40,9 @@ public class Block {
 		public static Block grass = new Block(empty, "grass_side");
 		public static Block rock = new Block(empty, "stone");
 		
+		public static ItemContainer ore_iron = new ItemContainer(empty, Item.IRON, 10);
+		public static ItemContainer ore_copper = new ItemContainer(empty, Item.COPPER, 10);
+		public static ItemContainer ore_gold = new ItemContainer(empty, Item.GOLD, 10);
 		
 		
 	//Start Class

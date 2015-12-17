@@ -29,12 +29,12 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
-import com.xemplar.games.android.miningadv.controller.JaxonController;
+import com.xemplar.games.android.miningadv.controller.DiggerController;
 import com.xemplar.games.android.miningadv.inventory.Inventory;
 import com.xemplar.games.android.miningadv.items.ItemStack;
 import com.xemplar.games.android.miningadv.screens.GameScreen;
 
-public class Jaxon extends Entity{
+public class Digger extends Entity{
     private static final float RUNNING_FRAME_DURATION = 0.1f;
 	
 	private TextureRegion jaxonIdleLeft;
@@ -47,14 +47,16 @@ public class Jaxon extends Entity{
     private Animation walkLeftAnimation;
     private Animation walkRightAnimation;
     
-    public Jaxon(Vector2 startPosistion){
-		super(startPosistion, 1.0F / 3F, 1.0F / 2F, 8);
+    public Digger(Vector2 startPosistion){
+		super(startPosistion, 0.9F, 0.75F, 8);
         
-		controller = new JaxonController(this);
+		controller = new DiggerController(this);
 		
         drawX = (bounds.getWidth() / 2F) - (1.5F / 2F);
         drawX = (drawX < 0) ? -drawX : drawX;
         drawX = drawX / 4F;
+        
+        System.out.println(drawX);
         
         inventory = new Inventory(this, 4);
         loadTextures();
@@ -98,8 +100,8 @@ public class Jaxon extends Entity{
     	return true;
     }
     
-    public JaxonController getController(){
-    	return (JaxonController)controller;
+    public DiggerController getController(){
+    	return (DiggerController)controller;
     }
     
 	public void updateEntity(float delta) {
@@ -120,7 +122,7 @@ public class Jaxon extends Entity{
 	
     public void render(SpriteBatch batch) {
         jaxonFrame = isFacingLeft() ? jaxonIdleLeft : jaxonIdleRight;
-        if(getState().equals(Jaxon.State.WALKING)) {
+        if(getState().equals(Digger.State.WALKING)) {
             jaxonFrame = isFacingLeft() ? walkLeftAnimation.getKeyFrame(getStateTime(), true) : walkRightAnimation.getKeyFrame(getStateTime(), true);
         }
         

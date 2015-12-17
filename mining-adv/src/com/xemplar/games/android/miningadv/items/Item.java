@@ -25,7 +25,9 @@ import com.xemplar.games.android.miningadv.blocks.ItemBlock;
 import com.xemplar.games.android.miningadv.entities.Entity;
 
 public class Item {
-    public static Item BLUE_KEY = new Item(0, 8, "keyBlue");
+	public static Material IRON = new Material(0, 32, "iron_ore", 10);
+	public static Material COPPER = new Material(1, 32, "copper_ore", 25);
+	public static Material GOLD = new Material(2, 32, "gold_ore", 100);
     
     public int id;
     public int maxStack;

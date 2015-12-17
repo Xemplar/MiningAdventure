@@ -30,11 +30,11 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
 import com.xemplar.games.android.miningadv.blocks.Block;
 import com.xemplar.games.android.miningadv.entities.Entity;
-import com.xemplar.games.android.miningadv.entities.Jaxon;
+import com.xemplar.games.android.miningadv.entities.Digger;
 import com.xemplar.games.android.miningadv.model.World;
 import com.xemplar.games.android.miningadv.screens.GameScreen;
 
-public class JaxonController implements Controller{
+public class DiggerController implements Controller{
 	private Array<Rectangle> collisionRects = new Array<Rectangle>();
     enum Keys {
         LEFT, RIGHT, JUMP, FIRE
@@ -66,11 +66,11 @@ public class JaxonController implements Controller{
 
 	boolean grounded = false;
     
-    private Jaxon jaxon;
+    private Digger jaxon;
     private long jumpPressedTime;
     private boolean jumpingPressed;
 
-    static Map<Keys, Boolean> keys = new HashMap<JaxonController.Keys, Boolean>();
+    static Map<Keys, Boolean> keys = new HashMap<DiggerController.Keys, Boolean>();
 
     static {
         keys.put(Keys.LEFT, false);
@@ -79,7 +79,7 @@ public class JaxonController implements Controller{
         keys.put(Keys.FIRE, false);
     };
 
-    public JaxonController(Jaxon jaxon) {
+    public DiggerController(Digger jaxon) {
         this.jaxon = jaxon;
     }
 
@@ -138,8 +138,8 @@ public class JaxonController implements Controller{
     public void update(float delta) {
         processInput();
 
-		if (grounded && jaxon.getState().equals(Jaxon.State.JUMPING)) {
-            jaxon.setState(Jaxon.State.IDLE);
+		if (grounded && jaxon.getState().equals(Digger.State.JUMPING)) {
+            jaxon.setState(Digger.State.IDLE);
         }
 
         jaxon.getAcceleration().y = GRAVITY;
@@ -265,10 +265,10 @@ public class JaxonController implements Controller{
 
     private boolean processInput() {
 		if (keys.get(Keys.JUMP)) {
-			if (!jaxon.getState().equals(Jaxon.State.JUMPING) && grounded) {
+			if (!jaxon.getState().equals(Digger.State.JUMPING) && grounded) {
 				jumpingPressed = true;
 				jumpPressedTime = System.currentTimeMillis();
-				jaxon.setState(Jaxon.State.JUMPING);
+				jaxon.setState(Digger.State.JUMPING);
 				jaxon.getVelocity().y = JUMP_HEIGHT; 
 				grounded = false;
 			} else {
@@ -284,20 +284,20 @@ public class JaxonController implements Controller{
 		if (keys.get(Keys.LEFT)) {
 			// left is pressed
 			jaxon.setFacingLeft(true);
-			if (!jaxon.getState().equals(Jaxon.State.JUMPING)) {
-				jaxon.setState(Jaxon.State.WALKING);
+			if (!jaxon.getState().equals(Digger.State.JUMPING)) {
+				jaxon.setState(Digger.State.WALKING);
 			}
 			jaxon.getAcceleration().x = -ACCELERATION;
 		} else if (keys.get(Keys.RIGHT)) {
 			// right is pressed
 			jaxon.setFacingLeft(false);
-			if (!jaxon.getState().equals(Jaxon.State.JUMPING)) {
-				jaxon.setState(Jaxon.State.WALKING);
+			if (!jaxon.getState().equals(Digger.State.JUMPING)) {
+				jaxon.setState(Digger.State.WALKING);
 			}
 			jaxon.getAcceleration().x = ACCELERATION;
 		} else {
-			if (!jaxon.getState().equals(Jaxon.State.JUMPING)) {
-				jaxon.setState(Jaxon.State.IDLE);
+			if (!jaxon.getState().equals(Digger.State.JUMPING)) {
+				jaxon.setState(Digger.State.IDLE);
 			}
 			jaxon.getAcceleration().x = 0;
 
